@@ -12,6 +12,12 @@ updates:
       time: "06:00"
       timezone: "Europe/Berlin"
     open-pull-requests-limit: 10
+    # Stay on React 18 until the Radix packages accept React 19 types.
+    ignore:
+      - dependency-name: "@types/react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react-dom"
+        update-types: ["version-update:semver-major"]
     labels:
       - "dependencies"
     commit-message:
