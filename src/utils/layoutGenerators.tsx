@@ -24,7 +24,7 @@ import {
 export interface LayoutTemplate {
   id: string;
   name: string;
-  previewComponent: JSX.Element;
+  previewComponent: React.JSX.Element;
   description: string;
   type: 'grid' | 'flexbox' | 'modal';
 }
