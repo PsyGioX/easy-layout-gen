@@ -1,27 +1,23 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+const NotFound = () => (
+  <div className="flex min-h-screen flex-col bg-sand-50">
+    <Header />
+    <main className="flex flex-1 items-center justify-center px-6">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+        <p className="font-mono text-sm text-sand-700">404</p>
+        <h2 className="mt-2 text-3xl font-medium text-charcoal-950">This page doesn&rsquo;t exist</h2>
+        <p className="mt-2 text-charcoal-600">The layout you&rsquo;re looking for isn&rsquo;t here.</p>
+        <Link
+          to="/"
+          className="mt-6 inline-block rounded-full bg-charcoal-950 px-5 py-2.5 text-sm font-medium text-sand-50 transition-all-200 hover:bg-charcoal-800"
+        >
+          Browse templates
+        </Link>
       </div>
-    </div>
-  );
-};
+    </main>
+  </div>
+);
 
 export default NotFound;

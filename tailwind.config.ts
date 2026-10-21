@@ -19,6 +19,12 @@ export default {
 			}
 		},
 		extend: {
+			// System font stacks only: nothing is downloaded. On Apple devices
+			// "system-ui" resolves to SF Pro, on Windows to Segoe UI, etc.
+			fontFamily: {
+				sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'system-ui', 'sans-serif'],
+				mono: ['ui-monospace', '"SF Mono"', 'SFMono-Regular', 'Menlo', 'Consolas', '"Liberation Mono"', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -140,5 +146,6 @@ export default {
 			},
 		}
 	},
+	// eslint-disable-next-line @typescript-eslint/no-require-imports
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;

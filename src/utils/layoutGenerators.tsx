@@ -1,4 +1,5 @@
 import React from 'react';
+import type { LayoutOptions } from './layoutOptions';
 import {
   TwelveSpanGridPreview,
   ThreeByThreeGridPreview,
@@ -34,7 +35,7 @@ export interface CSSLayout {
   html: string;
 }
 
-export const generateGridLayout = (templateId: string, options: any = {}): CSSLayout => {
+export const generateGridLayout = (templateId: string, options: LayoutOptions = {}): CSSLayout => {
   switch (templateId) {
     case '12-span-grid':
       return {
@@ -223,7 +224,8 @@ export const generateGridLayout = (templateId: string, options: any = {}): CSSLa
 .card-image {
   width: 100%;
   height: ${options.imageHeight || '200px'};
-  object-fit: cover;
+  /* Placeholder: swap for background-image or an <img> */
+  background: linear-gradient(135deg, #e5e2d4, #c2ba9c);
 }
 
 .card-content {
@@ -232,28 +234,28 @@ export const generateGridLayout = (templateId: string, options: any = {}): CSSLa
         html: `
 <div class="card-grid">
   <div class="card">
-    <img class="card-image" src="https://via.placeholder.com/300x200" alt="Card image">
+    <div class="card-image"></div>
     <div class="card-content">
       <h3>Card Title</h3>
       <p>Card description text goes here.</p>
     </div>
   </div>
   <div class="card">
-    <img class="card-image" src="https://via.placeholder.com/300x200" alt="Card image">
+    <div class="card-image"></div>
     <div class="card-content">
       <h3>Card Title</h3>
       <p>Card description text goes here.</p>
     </div>
   </div>
   <div class="card">
-    <img class="card-image" src="https://via.placeholder.com/300x200" alt="Card image">
+    <div class="card-image"></div>
     <div class="card-content">
       <h3>Card Title</h3>
       <p>Card description text goes here.</p>
     </div>
   </div>
   <div class="card">
-    <img class="card-image" src="https://via.placeholder.com/300x200" alt="Card image">
+    <div class="card-image"></div>
     <div class="card-content">
       <h3>Card Title</h3>
       <p>Card description text goes here.</p>
@@ -275,6 +277,8 @@ export const generateGridLayout = (templateId: string, options: any = {}): CSSLa
 .masonry-item {
   overflow: hidden;
   border-radius: 0.5rem;
+  /* Placeholder: put an <img> inside, sized to 100% */
+  background: linear-gradient(135deg, #e5e2d4, #c2ba9c);
 }
 
 .masonry-item:nth-child(1) { grid-row: span 8; }
@@ -285,6 +289,7 @@ export const generateGridLayout = (templateId: string, options: any = {}): CSSLa
 .masonry-item:nth-child(6) { grid-row: span 5; }
 
 .masonry-item img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -304,24 +309,12 @@ export const generateGridLayout = (templateId: string, options: any = {}): CSSLa
 }`,
         html: `
 <div class="masonry-grid">
-  <div class="masonry-item">
-    <img src="https://source.unsplash.com/random/1" alt="Masonry item">
-  </div>
-  <div class="masonry-item">
-    <img src="https://source.unsplash.com/random/2" alt="Masonry item">
-  </div>
-  <div class="masonry-item">
-    <img src="https://source.unsplash.com/random/3" alt="Masonry item">
-  </div>
-  <div class="masonry-item">
-    <img src="https://source.unsplash.com/random/4" alt="Masonry item">
-  </div>
-  <div class="masonry-item">
-    <img src="https://source.unsplash.com/random/5" alt="Masonry item">
-  </div>
-  <div class="masonry-item">
-    <img src="https://source.unsplash.com/random/6" alt="Masonry item">
-  </div>
+  <div class="masonry-item"></div>
+  <div class="masonry-item"></div>
+  <div class="masonry-item"></div>
+  <div class="masonry-item"></div>
+  <div class="masonry-item"></div>
+  <div class="masonry-item"></div>
 </div>`
       };
       
@@ -439,7 +432,7 @@ export const generateGridLayout = (templateId: string, options: any = {}): CSSLa
   }
 };
 
-export const generateFlexboxLayout = (templateId: string, options: any = {}): CSSLayout => {
+export const generateFlexboxLayout = (templateId: string, options: LayoutOptions = {}): CSSLayout => {
   switch (templateId) {
     case 'row':
       return {
@@ -763,7 +756,7 @@ export const generateFlexboxLayout = (templateId: string, options: any = {}): CS
   }
 };
 
-export const generateModalLayout = (templateId: string, options: any = {}): CSSLayout => {
+export const generateModalLayout = (templateId: string, options: LayoutOptions = {}): CSSLayout => {
   switch (templateId) {
     case 'basic-modal':
       return {
@@ -1420,7 +1413,7 @@ export const generateModalLayout = (templateId: string, options: any = {}): CSSL
   }
 };
 
-export const getLayoutCode = (templateId: string, type: 'grid' | 'flexbox' | 'modal', options: any = {}): CSSLayout => {
+export const getLayoutCode = (templateId: string, type: 'grid' | 'flexbox' | 'modal', options: LayoutOptions = {}): CSSLayout => {
   if (type === 'grid') {
     return generateGridLayout(templateId, options);
   } else if (type === 'flexbox') {
