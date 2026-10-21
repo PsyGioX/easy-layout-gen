@@ -18,6 +18,12 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "@types/react-dom"
         update-types: ["version-update:semver-major"]
+      # The project uses Tailwind v3 config (@tailwind directives,
+      # tailwind.config.ts); v4 needs a separate migration.
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "tailwind-merge"
+        update-types: ["version-update:semver-major"]
     labels:
       - "dependencies"
     commit-message:

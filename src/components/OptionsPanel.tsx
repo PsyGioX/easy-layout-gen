@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
@@ -70,7 +70,11 @@ const TextOption: React.FC<{
   onChange: OptionsPanelProps['onChange'];
 }> = ({ field, value, onChange }) => {
   const [draft, setDraft] = useState(value);
-  useEffect(() => setDraft(value), [value]);
+  const [prevValue, setPrevValue] = useState(value);
+  if (value !== prevValue) {
+    setPrevValue(value);
+    setDraft(value);
+  }
   const invalid = draft !== '' && !isSafeValue(draft);
 
   return (
